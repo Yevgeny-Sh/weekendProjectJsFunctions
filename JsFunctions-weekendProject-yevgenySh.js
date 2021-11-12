@@ -204,16 +204,3 @@ function longestWordInSentence(sentence) {
   }
   return longestWord;
 }
-
-let arr = [2, 2, 2, 4, 2, 2, 2, 2, 1, 2, 2, 2];
-let str = `abababababab`;
-const newLocal = `i-like-camels_very_much`;
-// console.log(lowest2InArray(arr));
-// console.log(Summation(8));
-// toWeirdCase;
-// console.log(shortestWordInSentence("batm an f12345gggg6789p ghghg dsf"));
-// console.log(longestWordInSentence("batm an f12345gggg6789p ghghg dsf"));
-
-//console.log(toWeirdCase(newLocal));
-console.log(toCamelCase(newLocal));
-console.log(abbreviateTwoWords1(`yev sh`));
