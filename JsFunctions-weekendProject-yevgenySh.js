@@ -1,11 +1,10 @@
 function returnBoolString(bool) {
   bool ? `yes` : `no`;
 }
-
 function lowest2InArray(array) {
   let lowestNum = Math.min(...array); //its a way to pass to function(min) all elemnts of array
   let index = array.indexOf(Math.min(...array)); // because min expects to recieve a list of numbers..
-  array.splice(index, 1);
+  array.splice(index, 1); //delete min value from array
   let secondLowestNum = Math.min(...array);
   let sum = lowestNum + secondLowestNum;
   return sum;
@@ -32,14 +31,10 @@ function NextPerfectSquare(num) {
 }
 
 function findUniq(array) {
-  let uniqValue = array[0];
   let sortedArray = array.sort();
-  for (let index = 0; index < sortedArray.length - 1; index++) {
-    if (sortedArray[index] !== sortedArray[index + 1]) {
-      uniqValue = sortedArray[index + 1];
-    }
-  }
-  return uniqValue;
+  if (sortedArray[0] < sortedArray[1]) {
+    return sortedArray[0];
+  } else return sortedArray[sortedArray.length - 1];
 }
 
 function Summation(num) {
@@ -57,11 +52,9 @@ function century(year) {
 }
 
 function fourBasic(operat, num1, num2) {
-  let x = String(num1) + String(operat) + String(num2);
-  let y = eval(x);
-  return y;
+  let parametersToString = String(num1) + String(operat) + String(num2);
+  return eval(parametersToString);
 }
-
 function GrowthOfPopulation(
   originalInhabitantsNum,
   percent,
@@ -79,7 +72,6 @@ function GrowthOfPopulation(
   }
   return counter;
 }
-
 function peopleOnTheBus(array) {
   let count = 0;
   for (let i = 0; i < array.length; i++) {
@@ -92,7 +84,7 @@ function peopleOnTheBus(array) {
       }
     }
   }
-  return count;
+  return count >= 0 ? count : 0; //acount for negetive int because wrong input
 }
 
 function fibonachi(num) {
@@ -117,7 +109,7 @@ function Tribonacci(signature, num) {
         TribonacciArray[index - 3]
     );
   }
-  return TribonacciArray;
+  return num > 0 ? TribonacciArray : 0; //account for num not positive int as input
 }
 
 function trimString(str) {
@@ -160,11 +152,9 @@ function toWeirdCase(string) {
   return string;
 }
 
-function abbreviateTwoWords1(string) {
+function abbreviateTwoWords(string) {
   let newstr = ``;
   let newWordIndex = string.indexOf(` `) + 1;
-  console.log(newWordIndex);
-  console.log(string);
   let string1 =
     string.charAt(0).toUpperCase() +
     `.` +
@@ -174,14 +164,16 @@ function abbreviateTwoWords1(string) {
 function maskify(str) {
   let newstr = ``;
   let lenghCount = 0;
-  for (let index = 0; index < str.length - 4; index++) {
-    newstr = newstr + `#`;
-    lenghCount++;
-  }
-  for (let index = lenghCount; index < str.length; index++) {
-    newstr = newstr + str[index];
-  }
-  return newstr;
+  if (str) {
+    for (let index = 0; index < str.length - 4; index++) {
+      newstr = newstr + `#`;
+      lenghCount++;
+    }
+    for (let index = lenghCount; index < str.length; index++) {
+      newstr = newstr + str[index];
+    }
+    return newstr;
+  } else return "";
 }
 
 function shortestWordInSentence(sentence) {
@@ -196,11 +188,11 @@ function shortestWordInSentence(sentence) {
 }
 function longestWordInSentence(sentence) {
   let arrayOfWords = sentence.split(" ");
-  let longestWord = 0;
+  let longestWord = arrayOfWords[0];
   for (let i = 0; i < arrayOfWords.length; i++) {
-    if (arrayOfWords[i].length > longestWord) {
-      longestWord = arrayOfWords[i].length;
+    if (arrayOfWords[i].length > longestWord.length) {
+      longestWord = arrayOfWords[i];
     }
   }
-  return longestWord;
+  return String(longestWord);
 }
